@@ -13,6 +13,8 @@ interface EnvConfig {
   DB_PASSWORD?: string;
   DB_NAME: string;
   JWT_SECRET: string;
+  ALLOWED_ORIGINS: string;
+  DB_SSL: boolean;
 }
 
 const getEnvOrThrow = (key: string): string => {
@@ -32,4 +34,6 @@ export const env: EnvConfig = {
   DB_PASSWORD: process.env.DB_PASSWORD,
   DB_NAME: getEnvOrThrow('DB_NAME'),
   JWT_SECRET: getEnvOrThrow('JWT_SECRET'),
+  ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS || 'http://localhost:3000',
+  DB_SSL: process.env.DB_SSL === 'true',
 };
