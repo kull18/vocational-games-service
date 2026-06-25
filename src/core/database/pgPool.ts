@@ -10,6 +10,7 @@ export const pool = new Pool({
   max: 20, // Maximum number of clients in the pool
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
+  ssl: env.DB_SSL ? { rejectUnauthorized: false } : undefined,
 });
 
 // Verify connection on startup
